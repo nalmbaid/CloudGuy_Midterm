@@ -175,14 +175,14 @@ function createPopupImage(filename, options = {}) {
   const width = options.width || "100px"; // ## updated here - fixed width
   const left = options.left || "20px";
   const top = options.top || "20px";
-  const opacity = options.opacity !== undefined ? options.opacity : 0.8;
+  const opacity =  0.8;
 
   Object.assign(img.style, {
     width,
     height: "auto", // ## updated here - maintain aspect ratio
     left,
     top,
-    opacity: "0",
+    opacity: "0.8",
     position: "fixed",
     borderRadius: "8px",
     zIndex: "9999",
@@ -259,12 +259,12 @@ if (isShoppingSite()) {
 
   const initialTitle = getItemTitle();
   const initialCategory = detectCategory(initialTitle);
-  const initialOpacity = categoryOpacity[initialCategory] ?? 0.6;
+
 
   activeImageElement = createPopupImage(imageFiles[currentImageIndex], {
     left: "20px",
     top: "20px",
-    opacity: initialOpacity
+    opacity: 0.8
   });
 
   console.log("Detected category:", initialCategory);
@@ -334,7 +334,7 @@ function updateDisplayedImage() {
 
   const title = getItemTitle();
   const category = detectCategory(title);
-  const opacity = categoryOpacity[category] ?? 0.8;
+  const opacity = 0.8
 
   if (activeImageElement) {
     const oldImage = activeImageElement;
@@ -345,7 +345,7 @@ function updateDisplayedImage() {
   activeImageElement = createPopupImage(chosenImage, {
     left: "20px",
     top: "20px",
-    opacity
+    opacity: 0.8
   });
 
   // Persist current image index (##updated here)
