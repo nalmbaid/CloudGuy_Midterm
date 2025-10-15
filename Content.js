@@ -109,13 +109,13 @@ function isShoppingSite() {
 function detectCategory(title) {
   title = title.toLowerCase();
   for (const [category, keywords] of Object.entries(categories)) {
-    if (keywords.some(k => title.includes
     if (keywords.some(k => title.includes(k))) {
       return category;
     }
   }
   return "unknown";
 }
+
 
 function getItemTitle() {
   const titleEl = document.querySelector(
