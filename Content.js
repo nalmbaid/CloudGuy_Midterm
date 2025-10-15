@@ -151,12 +151,19 @@ function createPopupImage(filename, options = {}) {
 function updateDisplayedImage() {
   const chosenImage = imageFiles[currentImageIndex];
 
+  // Remove fade-out behavior — only replace if needed
   if (activeImageElement) {
-    activeImageElement.style.opacity = "0";
-    setTimeout(() => activeImageElement.remove(), 600);
+    activeImageElement.src = chrome.runtime.getURL(chosenImage);
+    activeImageElement.style.opacity = "0.8"; // ensure it's visible
+  } else {
+    activeImageElement = createPopupImage(chosenImage, {
+      left: "20px",
+      top: "20px",
+      opacity: 0.8
+    });
   }
 
-  activeImageElement = createPopupImage(chosenImage);
+  // Persist image index
   localStorage.setItem("currentImageIndex", currentImageIndex);
 }
 
